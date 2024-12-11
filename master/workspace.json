@@ -15,13 +15,13 @@
       "order" : 2,
       "title" : ""
     }, {
-      "content" : "# >> Note\n\nThis class diagram shows the code-level structure of the \"Create Note\" use case.\n\n```mermaid\nclassDiagram\n  direction TB\n  class Note {\n      + id: string\n      + title: string\n      + description: string\n      + createdBy: string\n      + archived: boolean\n  }\n\n  class CreateNewNoteUseCase {\n      + execute(payload: CreateNoteProps): Note\n  }\n\n  class CreateNewNoteInteractor {\n      - noteRepository: NoteRepository\n      + execute(request: CreateNoteDTO): Note\n  }\n\n  class NoteRepository {\n      + save(note: Note): Note\n      + findById(id: string): Note\n      + findAllByAuthor(authorId: string): Note[]\n  }\n\n  class Controller {\n      + handle(request: Request): Response\n  }\n\n  class NoteRepositoryImplement {\n      + save(note: Note): Note\n      + findById(id: string): Note\n      + findAllByAuthor(authorId: string): Note[]\n  }\n\n  CreateNewNoteUseCase <|.. CreateNewNoteInteractor\n  CreateNewNoteInteractor --> NoteRepository : uses\n  CreateNewNoteInteractor --> Note : uses\n  Controller --> CreateNewNoteUseCase : invokes\n  NoteRepository <|.. NoteRepositoryImplement\n\n  %% Add custom class for styling\n  style Note fill:#ffffcc,stroke:#ffd700,stroke-width:2px\n  style CreateNewNoteUseCase fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style CreateNewNoteInteractor fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style NoteRepository fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style Controller fill:#ccffcc,stroke:#00ff00,stroke-width:2px\n  style NoteRepositoryImplement fill:#ccffcc,stroke:#00ff00,stroke-width:2px\n\n```\n",
+      "content" : "# >> Note\n\nThis class diagram shows the code-level structure of the \"Create Note\" use case.\n\n```mermaid\nclassDiagram\n  direction TB\n  class Note {\n      + id: string\n      + title: string\n      + description: string\n      + createdBy: string\n      + archived: boolean\n  }\n\n  class CreateNewNoteUseCase {\n      + execute(payload: CreateNoteDTO): Note\n  }\n\n  class CreateNewNoteInteractor {\n      - noteRepository: NoteRepository\n      + execute(request: CreateNoteDTO): Note\n  }\n\n  class NoteRepository {\n      + getNoteById(id: UniqueID): Note;\n      + getNotesByUserId(userId: UniqueID): Note[];\n      + updateNote(note: Note): Note;\n      + deleteNote(id: UniqueID): Note;\n      + createNewNote(note: Note): Note;\n  }\n\n  class Controller {\n      + handle(request: Request): Response\n  }\n\n  class NoteRepositoryImplement {\n      + getNoteById(id: UniqueID): Note;\n      + getNotesByUserId(userId: UniqueID): Note[];\n      + updateNote(note: Note): Note;\n      + deleteNote(id: UniqueID): Note;\n      + createNewNote(note: Note): Note;\n  }\n\n  CreateNewNoteUseCase <|.. CreateNewNoteInteractor\n  CreateNewNoteInteractor --> NoteRepository : uses\n  CreateNewNoteInteractor --> Note : uses\n  Controller --> CreateNewNoteUseCase : invokes\n  NoteRepository <|.. NoteRepositoryImplement\n\n  %% Add custom class for styling\n  style Note fill:#ffffcc,stroke:#ffd700,stroke-width:2px\n  style CreateNewNoteUseCase fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style CreateNewNoteInteractor fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style NoteRepository fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style Controller fill:#ccffcc,stroke:#00ff00,stroke-width:2px\n  style NoteRepositoryImplement fill:#ccffcc,stroke:#00ff00,stroke-width:2px\n\n```\n",
       "filename" : "0201-note.md",
       "format" : "Markdown",
       "order" : 3,
       "title" : ""
     }, {
-      "content" : "# >> User\n\nThis class diagram shows the code-level structure of the \"Sign-In\" and \"Sign-Up\" use case.\n\n```mermaid\n\nclassDiagram\n  direction TB\n\n  %% Domain Entity\n  class User {\n      + id: string\n      + name: string\n      + email: string\n      + password: string\n      + role: string\n      + activated: boolean\n  }\n\n  %% Use Cases (Interfaces)\n  class SignUpUseCase {\n      + execute(name: string, email: string, password: string): User\n  }\n\n  class SignInUseCase {\n      + execute(email: string, password: string): User\n  }\n\n  %% Interactors (Implementation of Use Cases)\n  class SignUpInteractor {\n      - userRepository: UserRepository\n      + execute(name: string, email: string, password: string): User\n  }\n\n  class SignInInteractor {\n      - userRepository: UserRepository\n      + execute(email: string, password: string): User\n  }\n\n  %% Repository Interface\n  class UserRepository {\n      + save(user: User): User\n      + findByEmail(email: string): User\n  }\n\n  %% Controller & UserRepositoryImplement\n  class Controller {\n      + handleSignUp(request: Request): Response\n      + handleSignIn(request: Request): Response\n  }\n\n  class UserRepositoryImplement {\n      + save(user: UserDb): User\n      + findByEmail(email: string): UserDb\n  }\n\n  %% Relationships\n  SignUpUseCase <|.. SignUpInteractor\n  SignInUseCase <|.. SignInInteractor\n\n  SignUpInteractor --> UserRepository : uses\n  SignUpInteractor --> User : uses\n\n  SignInInteractor --> UserRepository : uses\n  SignInInteractor --> User : uses\n\n  Controller --> SignUpUseCase : invokes\n  Controller --> SignInUseCase : invokes\n\n  UserRepository <|.. UserRepositoryImplement\n\n  %% Styles\n  style User fill:#ffffcc,stroke:#ffd700,stroke-width:2px\n  style SignUpUseCase fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style SignInUseCase fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style SignUpInteractor fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style SignInInteractor fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style UserRepository fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style Controller fill:#ccffcc,stroke:#00ff00,stroke-width:2px\n  style UserRepositoryImplement fill:#ccffcc,stroke:#00ff00,stroke-width:2px\n```\n",
+      "content" : "# >> User\n\nThis class diagram shows the code-level structure of the \"Sign-In\" and \"Sign-Up\" use case.\n\n```mermaid\nclassDiagram\n  direction TB\n\n  %% Domain Entity\n  class User {\n      + id: string\n      + name: string\n      + email: string\n      + password: string\n      + role: string\n      + activated: boolean\n  }\n\n  %% Use Cases (Interfaces)\n  class SignUpUseCase {\n      + execute(email: string, password: string): User\n  }\n\n  class SignInUseCase {\n      + execute(email: string, password: string): User\n  }\n\n  %% Interactors (Implementation of Use Cases)\n  class SignUpInteractor {\n      - userRepository: UserRepository\n      + execute(email: string, password: string): User\n  }\n\n  class SignInInteractor {\n      - userRepository: UserRepository\n      + execute(email: string, password: string): User\n  }\n\n  %% Repository Interface\n  class UserRepository {\n      + create(user: User): User\n      + findByEmail(email: string): User\n  }\n\n  %% Controller & UserRepositoryImplement\n  class Controller {\n      + handleSignUp(request: Request): Response\n      + handleSignIn(request: Request): Response\n  }\n\n  class UserRepositoryImplement {\n      + create(user: User): User\n      + findByEmail(email: string): User\n  }\n\n  %% Relationships\n  SignUpUseCase <|.. SignUpInteractor\n  SignInUseCase <|.. SignInInteractor\n\n  SignUpInteractor --> UserRepository : uses\n  SignUpInteractor --> User : uses\n\n  SignInInteractor --> UserRepository : uses\n  SignInInteractor --> User : uses\n\n  Controller --> SignUpUseCase : invokes\n  Controller --> SignInUseCase : invokes\n\n  UserRepository <|.. UserRepositoryImplement\n\n  %% Styles\n  style User fill:#ffffcc,stroke:#ffd700,stroke-width:2px\n  style SignUpUseCase fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style SignInUseCase fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style SignUpInteractor fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style SignInInteractor fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style UserRepository fill:#ffcccc,stroke:#ff0000,stroke-width:2px\n  style Controller fill:#ccffcc,stroke:#00ff00,stroke-width:2px\n  style UserRepositoryImplement fill:#ccffcc,stroke:#00ff00,stroke-width:2px\n```\n",
       "filename" : "0202-user.md",
       "format" : "Markdown",
       "order" : 4,
@@ -43,7 +43,7 @@
         "destinationId" : "3",
         "id" : "11",
         "properties" : {
-          "structurizr.dsl.identifier" : "cd665267-5d37-4224-b5d0-8c22b7c06184"
+          "structurizr.dsl.identifier" : "67f7e11d-bef7-4c60-b41c-bcf519ebe55d"
         },
         "sourceId" : "1",
         "tags" : "Relationship"
@@ -70,7 +70,7 @@
           "destinationId" : "4",
           "id" : "13",
           "properties" : {
-            "structurizr.dsl.identifier" : "a25fda41-9c19-4b4e-b6a4-d9530629e6a1"
+            "structurizr.dsl.identifier" : "09e95c98-bd63-4be0-ab4f-1b571804f739"
           },
           "sourceId" : "3",
           "tags" : "Relationship"
@@ -91,7 +91,7 @@
             "destinationId" : "7",
             "id" : "14",
             "properties" : {
-              "structurizr.dsl.identifier" : "5d0c5efc-7aea-4d4d-8310-3106d5d185d8"
+              "structurizr.dsl.identifier" : "9a4e80fd-e194-436c-9255-df36fc1719ff"
             },
             "sourceId" : "5",
             "tags" : "Relationship"
@@ -111,7 +111,7 @@
             "destinationId" : "8",
             "id" : "15",
             "properties" : {
-              "structurizr.dsl.identifier" : "e0d98818-efe3-44ae-a3da-ef34b6d7df8b"
+              "structurizr.dsl.identifier" : "fb3ca454-2d27-427b-aac3-acdeb1d2f85f"
             },
             "sourceId" : "6",
             "tags" : "Relationship"
@@ -130,7 +130,7 @@
             "destinationId" : "9",
             "id" : "16",
             "properties" : {
-              "structurizr.dsl.identifier" : "dcbc504a-a30d-4ddf-a319-cffd2d1c2aea"
+              "structurizr.dsl.identifier" : "1ba039d3-9d4d-438d-bf2c-63dd393cadc8"
             },
             "sourceId" : "7",
             "tags" : "Relationship"
@@ -149,7 +149,7 @@
             "destinationId" : "9",
             "id" : "17",
             "properties" : {
-              "structurizr.dsl.identifier" : "9e25b683-da00-4ca4-ad61-558554cf0d46"
+              "structurizr.dsl.identifier" : "6a648d47-e435-4d1f-a4a0-d6fb421f652a"
             },
             "sourceId" : "8",
             "tags" : "Relationship"
@@ -169,7 +169,7 @@
             "destinationId" : "10",
             "id" : "18",
             "properties" : {
-              "structurizr.dsl.identifier" : "4e31c7cb-e0f5-4de2-843e-74be2793a515"
+              "structurizr.dsl.identifier" : "f61c437b-400d-4637-bb9f-3240d67ec5e4"
             },
             "sourceId" : "9",
             "tags" : "Relationship"

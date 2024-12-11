@@ -53,7 +53,7 @@
   }
 
   class CreateNewNoteUseCase {
-      + execute(payload: CreateNoteProps): Note
+      + execute(payload: CreateNoteDTO): Note
   }
 
   class CreateNewNoteInteractor {
@@ -62,9 +62,11 @@
   }
 
   class NoteRepository {
-      + save(note: Note): Note
-      + findById(id: string): Note
-      + findAllByAuthor(authorId: string): Note[]
+      + getNoteById(id: UniqueID): Note;
+      + getNotesByUserId(userId: UniqueID): Note[];
+      + updateNote(note: Note): Note;
+      + deleteNote(id: UniqueID): Note;
+      + createNewNote(note: Note): Note;
   }
 
   class Controller {
@@ -72,9 +74,11 @@
   }
 
   class NoteRepositoryImplement {
-      + save(note: Note): Note
-      + findById(id: string): Note
-      + findAllByAuthor(authorId: string): Note[]
+      + getNoteById(id: UniqueID): Note;
+      + getNotesByUserId(userId: UniqueID): Note[];
+      + updateNote(note: Note): Note;
+      + deleteNote(id: UniqueID): Note;
+      + createNewNote(note: Note): Note;
   }
 
   CreateNewNoteUseCase &lt;|.. CreateNewNoteInteractor

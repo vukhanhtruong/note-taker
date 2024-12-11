@@ -42,8 +42,7 @@
         <div class="content p-3">
           <div><h1>&gt;&gt; User</h1>
 <p>This class diagram shows the code-level structure of the "Sign-In" and "Sign-Up" use case.</p>
-<pre><code class="language-mermaid">
-classDiagram
+<pre><code class="language-mermaid">classDiagram
   direction TB
 
   %% Domain Entity
@@ -58,7 +57,7 @@ classDiagram
 
   %% Use Cases (Interfaces)
   class SignUpUseCase {
-      + execute(name: string, email: string, password: string): User
+      + execute(email: string, password: string): User
   }
 
   class SignInUseCase {
@@ -68,7 +67,7 @@ classDiagram
   %% Interactors (Implementation of Use Cases)
   class SignUpInteractor {
       - userRepository: UserRepository
-      + execute(name: string, email: string, password: string): User
+      + execute(email: string, password: string): User
   }
 
   class SignInInteractor {
@@ -78,7 +77,7 @@ classDiagram
 
   %% Repository Interface
   class UserRepository {
-      + save(user: User): User
+      + create(user: User): User
       + findByEmail(email: string): User
   }
 
@@ -89,8 +88,8 @@ classDiagram
   }
 
   class UserRepositoryImplement {
-      + save(user: UserDb): User
-      + findByEmail(email: string): UserDb
+      + create(user: User): User
+      + findByEmail(email: string): User
   }
 
   %% Relationships
