@@ -1,0 +1,24 @@
+@startuml
+set separator none
+title Note Taker System - Containers
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+Person(User, "User", $descr="A person who writes, edits, and shares notes.", $tags="", $link="")
+
+System_Boundary("NoteTakerSystem_boundary", "Note Taker System", $tags="") {
+  Container(NoteTakerSystem.D1Database, "D1 Database", $techn="Cloudflare D1", $descr="Stores users, notes, and sharing.", $tags="", $link="")
+  Container(NoteTakerSystem.ReactFrontend, "React Frontend", $techn="React, Browser", $descr="A React SPA for user interactions.", $tags="", $link="")
+  Container(NoteTakerSystem.BackendAPI, "Backend API", $techn="Node.js, Hono, Cloudflare Workers", $descr="Handles auth, note CRUD, and sharing.", $tags="", $link="")
+}
+
+Rel(User, NoteTakerSystem.ReactFrontend, "Uses via browser", $techn="", $tags="", $link="")
+Rel(NoteTakerSystem.ReactFrontend, NoteTakerSystem.BackendAPI, "Sends requests (CRUD, Auth, Share)", $techn="", $tags="", $link="")
+Rel(NoteTakerSystem.BackendAPI, NoteTakerSystem.D1Database, "Executes queries", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

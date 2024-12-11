@@ -1,0 +1,29 @@
+@startuml
+set separator none
+title Note Taker System - Backend API - Components
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+!include <C4/C4_Component>
+
+Container(NoteTakerSystem.D1Database, "D1 Database", $techn="Cloudflare D1", $descr="Stores users, notes, and sharing.", $tags="", $link="")
+
+Container_Boundary("NoteTakerSystem.BackendAPI_boundary", "Backend API", $tags="") {
+  Component(NoteTakerSystem.BackendAPI.NoteController, "Note Controller", $techn="Hono", $descr="Invokes use cases for notes.", $tags="", $link="")
+  Component(NoteTakerSystem.BackendAPI.UserController, "User Controller", $techn="Hono", $descr="Invokes use cases for user authentication.", $tags="", $link="")
+  Component(NoteTakerSystem.BackendAPI.NoteModule, "Note Module", $techn="Clean Architecture", $descr="Implements use cases for note.", $tags="", $link="")
+  Component(NoteTakerSystem.BackendAPI.UserModule, "User Module", $techn="Clean Architecture", $descr="Implements use cases for user.", $tags="", $link="")
+  Component(NoteTakerSystem.BackendAPI.DataAccessLayer, "Data Access Layer", $techn="SQL Queries/ ORM /D1 SDK", $descr="Interacts with the D1 database.", $tags="", $link="")
+}
+
+Rel(NoteTakerSystem.BackendAPI.NoteController, NoteTakerSystem.BackendAPI.NoteModule, "Invokes notes's use cases", $techn="", $tags="", $link="")
+Rel(NoteTakerSystem.BackendAPI.UserController, NoteTakerSystem.BackendAPI.UserModule, "Invokes users's use cases", $techn="", $tags="", $link="")
+Rel(NoteTakerSystem.BackendAPI.NoteModule, NoteTakerSystem.BackendAPI.DataAccessLayer, "", $techn="", $tags="", $link="")
+Rel(NoteTakerSystem.BackendAPI.UserModule, NoteTakerSystem.BackendAPI.DataAccessLayer, "", $techn="", $tags="", $link="")
+Rel(NoteTakerSystem.BackendAPI.DataAccessLayer, NoteTakerSystem.D1Database, "Executes queries", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

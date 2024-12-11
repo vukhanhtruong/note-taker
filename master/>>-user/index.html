@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>&gt;&gt; User | Note Taker App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
+    <link href="./../style-branding.css" rel="stylesheet">
+    <script type="text/javascript" src="../../modal.js"></script>
+    <script type="text/javascript" src="../../svg-modal.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../../header.js"></script>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand has-site-branding"><a href="../" class="navbar-item"><span class="has-text-weight-semibold has-site-branding">Note Taker App</span></a></div>
+      <div class="navbar-menu has-site-branding">
+        <div class="navbar-end">
+          <div class="navbar-item"><input class="input is-small is-rounded" id="search" type="search" size="30" maxlength="50" placeholder="Search..." onkeyup="redirect(event, value, '../search/')"></div>
+          <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link has-site-branding">master</a>
+            <div class="navbar-dropdown is-right"><a href="../../master/" class="navbar-item">master</a>
+              <hr class="navbar-divider">
+              <div class="navbar-item has-text-grey-light"><span>v</span><span>0.0.0</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="site-layout" id="site">
+      <aside class="menu p-3">
+        <p class="menu-label">General</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="../" class="">Home</a><a href="../software-systems/" class="">Software Systems</a><a href="../&gt;-code-level-class-diagram/" class="">&gt; Code-Level Class Diagram</a><a href="../&gt;&gt;-note/" class="">&gt;&gt; Note</a><a href="./" class="is-active">&gt;&gt; User</a></li>
+        </ul>
+        <p class="menu-label">Software systems</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="../note-taker-system/" class="">Note Taker System</a></li>
+        </ul>
+      </aside>
+      <div class="container is-fluid">
+        <div class="content p-3">
+          <div><h1>&gt;&gt; User</h1>
+<p>This class diagram shows the code-level structure of the "Sign-In" and "Sign-Up" use case.</p>
+<pre><code class="language-mermaid">
+classDiagram
+  direction TB
+
+  %% Domain Entity
+  class User {
+      + id: string
+      + name: string
+      + email: string
+      + password: string
+      + role: string
+      + activated: boolean
+  }
+
+  %% Use Cases (Interfaces)
+  class SignUpUseCase {
+      + execute(name: string, email: string, password: string): User
+  }
+
+  class SignInUseCase {
+      + execute(email: string, password: string): User
+  }
+
+  %% Interactors (Implementation of Use Cases)
+  class SignUpInteractor {
+      - userRepository: UserRepository
+      + execute(name: string, email: string, password: string): User
+  }
+
+  class SignInInteractor {
+      - userRepository: UserRepository
+      + execute(email: string, password: string): User
+  }
+
+  %% Repository Interface
+  class UserRepository {
+      + save(user: User): User
+      + findByEmail(email: string): User
+  }
+
+  %% Controller &amp; UserRepositoryImplement
+  class Controller {
+      + handleSignUp(request: Request): Response
+      + handleSignIn(request: Request): Response
+  }
+
+  class UserRepositoryImplement {
+      + save(user: UserDb): User
+      + findByEmail(email: string): UserDb
+  }
+
+  %% Relationships
+  SignUpUseCase &lt;|.. SignUpInteractor
+  SignInUseCase &lt;|.. SignInInteractor
+
+  SignUpInteractor --&gt; UserRepository : uses
+  SignUpInteractor --&gt; User : uses
+
+  SignInInteractor --&gt; UserRepository : uses
+  SignInInteractor --&gt; User : uses
+
+  Controller --&gt; SignUpUseCase : invokes
+  Controller --&gt; SignInUseCase : invokes
+
+  UserRepository &lt;|.. UserRepositoryImplement
+
+  %% Styles
+  style User fill:#ffffcc,stroke:#ffd700,stroke-width:2px
+  style SignUpUseCase fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+  style SignInUseCase fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+  style SignUpInteractor fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+  style SignInInteractor fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+  style UserRepository fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+  style Controller fill:#ccffcc,stroke:#00ff00,stroke-width:2px
+  style UserRepositoryImplement fill:#ccffcc,stroke:#00ff00,stroke-width:2px
+</code></pre></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../../reformat-mermaid.js"></script>
+    <script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.esm.min.mjs';</script>
+  </body>
+</html>

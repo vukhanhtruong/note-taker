@@ -1,0 +1,16 @@
+@startuml
+set separator none
+title Note Taker System - System Context
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+
+Person(User, "User", $descr="A person who writes, edits, and shares notes.", $tags="", $link="")
+System(NoteTakerSystem, "Note Taker System", $descr="Allows users to sign up, sign in, and manage notes.", $tags="", $link="")
+
+Rel(User, NoteTakerSystem, "Uses via browser", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

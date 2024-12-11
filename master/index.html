@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Note Taker App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="./style-branding.css" rel="stylesheet">
+    <script type="text/javascript" src="../modal.js"></script>
+    <script type="text/javascript" src="../svg-modal.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../header.js"></script>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand has-site-branding"><a href="./" class="navbar-item"><span class="has-text-weight-semibold has-site-branding">Note Taker App</span></a></div>
+      <div class="navbar-menu has-site-branding">
+        <div class="navbar-end">
+          <div class="navbar-item"><input class="input is-small is-rounded" id="search" type="search" size="30" maxlength="50" placeholder="Search..." onkeyup="redirect(event, value, 'search/')"></div>
+          <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link has-site-branding">master</a>
+            <div class="navbar-dropdown is-right"><a href="./../master/" class="navbar-item">master</a>
+              <hr class="navbar-divider">
+              <div class="navbar-item has-text-grey-light"><span>v</span><span>0.0.0</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="site-layout" id="site">
+      <aside class="menu p-3">
+        <p class="menu-label">General</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="./" class="is-active">Home</a><a href="software-systems/" class="">Software Systems</a><a href="&gt;-code-level-class-diagram/" class="">&gt; Code-Level Class Diagram</a><a href="&gt;&gt;-note/" class="">&gt;&gt; Note</a><a href="&gt;&gt;-user/" class="">&gt;&gt; User</a></li>
+        </ul>
+        <p class="menu-label">Software systems</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="note-taker-system/" class="">Note Taker System</a></li>
+        </ul>
+      </aside>
+      <div class="container is-fluid">
+        <div class="content p-3">
+          <div><h1>Note Taker Architecture</h1>
+<p>This site contains the C4 Model for a simple note-taking application</p></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../reformat-mermaid.js"></script>
+    <script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.esm.min.mjs';</script>
+  </body>
+</html>
