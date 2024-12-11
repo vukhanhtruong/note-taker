@@ -1,53 +1,49 @@
-# Structurizr DSL (domain specific language)
+# Structurizr DSL Development Server
 
-## Start a development web server
+This repository helps you work with Structurizr DSL to model and visualize software architecture using the C4 Model. It includes instructions for starting a development server and generating a static site using the **Structurizr Site Generator**.
 
-There are 2 options:
+---
 
-- [structurizr-site-generatr](https://github.com/avisi-cloud/structurizr-site-generatr)
-- [structurizr-lite](https://docs.structurizr.com/lite/quickstart)
+## Prerequisites
 
-### Structurizr Site Generator
+Before you begin, ensure you have the following installed:
 
-#### Development web server
+- **Docker**: Required to run the Structurizr Site Generator without local installation.
+- **Structurizr DSL**: Your architecture models should be written in `.dsl` files.
+
+---
+
+## Getting Started
+
+### 1. Start a Development Web Server
+
+You can start a local development server to preview your Structurizr DSL workspace in real time. Run the following command:
 
 ```sh
+cd docs
 docker run -it --rm -v $(pwd):/var/model -p 8080:8080 ghcr.io/avisi-cloud/structurizr-site-generatr serve --workspace-file workspace.dsl --assets-dir assets
 ```
 
-#### Generate static site
+- `workspace.dsl`: The main DSL file for your architecture model.
+- `assets`: A directory for additional resources (e.g., images, styles).
+- **Access the server**: Once the command runs, open your browser and navigate to http://localhost:8080 to view your architecture diagrams.
+
+### 2. Generate a Static Site
+
+To generate a static website for your Structurizr diagrams, use the following command:
 
 ```sh
+cd docs
 docker run -it --rm -v $(pwd):/var/model ghcr.io/avisi-cloud/structurizr-site-generatr generate-site --workspace-file workspace.dsl --assets-dir assets
 ```
 
-By default, the generated website will be placed in ./build, which is overwritten if it already exisits.
+**Output Directory**: The static site will be generated in the ./build folder.
+**Overwrite Behavior**: If the ./build folder exists, it will be replaced with the newly generated site.
 
-### Structurizr Lite
+### 3. Deploy to Github pages
 
 ```sh
-docker run -it --rm -p 8080:8080 -v $(pwd):/usr/local/structurizr structurizr/lite
+cp -r dsl/build/site/* docs
 ```
 
-#### Workspace filename
-
-```
-docker run -it --rm -p 8080:8080 -v $(pwd):/usr/local/structurizr -e STRUCTURIZR_WORKSPACE_FILENAME=infra structurizr/lite
-```
-
-# Documenting Architecture Decisions
-
-We will use Architecture Decision Records, as described [by Michael Nygard](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions).
-
-## ADR Tools
-
-- Install [ADR](https://github.com/npryce/adr-tools/blob/master/INSTALL.md) tool.
-- Initialize `adr init ./adrs`.
-- Add new record `adr new Your Description Here`.
-
-Find out more [here](https://github.com/npryce/adr-tools).
-
-## Deployment
-
-This image is using same repository with frontend but different tag. So, it will not auto spin up new deployed image.
-Please go to Github Actions to see the new release tag and manually update on development server.
+Then push the changes to branch named `gh-pages`
