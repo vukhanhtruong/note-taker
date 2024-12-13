@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Note Taker System | Note Taker App</title>
+    <title>Use of D1 database as the Relational Database Management System (RDBMS) | Note Taker App</title>
     <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
     <link href="../../../style.css" rel="stylesheet">
     <link href="./../../style-branding.css" rel="stylesheet">
@@ -31,48 +31,39 @@
       <aside class="menu p-3">
         <p class="menu-label">General</p>
         <ul class="menu-list has-site-branding">
-          <li><a href="../../" class="">Home</a><a href="../../decisions/" class="">Decisions</a><a href="../../software-systems/" class="">Software Systems</a><a href="../../&gt;-code-level-class-diagram/" class="">&gt; Code-Level Class Diagram</a><a href="../../&gt;&gt;-note/" class="">&gt;&gt; Note</a><a href="../../&gt;&gt;-user/" class="">&gt;&gt; User</a></li>
+          <li><a href="../../" class="">Home</a><a href="../" class="is-active">Decisions</a><a href="../../software-systems/" class="">Software Systems</a><a href="../../&gt;-code-level-class-diagram/" class="">&gt; Code-Level Class Diagram</a><a href="../../&gt;&gt;-note/" class="">&gt;&gt; Note</a><a href="../../&gt;&gt;-user/" class="">&gt;&gt; User</a></li>
         </ul>
         <p class="menu-label">Software systems</p>
         <ul class="menu-list has-site-branding">
-          <li><a href="../" class="is-active">Note Taker System</a></li>
+          <li><a href="../../note-taker-system/" class="">Note Taker System</a></li>
         </ul>
       </aside>
       <div class="container is-fluid">
-        <h1 class="title mt-3">Note Taker System</h1>
-        <h2 class="subtitle">Allows users to sign up, sign in, and manage notes.</h2>
-        <div class="tabs mt-3">
-          <ul class="is-flex-wrap-wrap is-flex-shrink-1 is-flex-grow-0">
-            <li><a href="../" class="">Info</a></li>
-            <li><a href="../context/" class="">Context views</a></li>
-            <li><a href="../container/" class="">Container views</a></li>
-            <li><a href="../component/backend-api/" class="">Component views</a></li>
-            <li class="is-active"><a href="./" class="is-active">Dependencies</a></li>
-          </ul>
-        </div>
         <div class="content p-3">
-          <h2>Inbound</h2>
-          <table class="table is-fullwidth">
-            <thead>
-              <tr>
-                <th class="is-one-fourth"><span class="">System</span></th>
-                <th class="is-two-fourth"><span class="">Description</span></th>
-                <th><span class="">Technology</span></th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-          <h2>Outbound</h2>
-          <table class="table is-fullwidth">
-            <thead>
-              <tr>
-                <th class="is-one-fourth"><span class="">System</span></th>
-                <th class="is-two-fourth"><span class="">Description</span></th>
-                <th><span class="">Technology</span></th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+          <div><h1>6. Use of D1 database as the Relational Database Management System (RDBMS)</h1>
+<p>Date: 2024-12-12</p>
+<h2>Status</h2>
+<p>Proposed</p>
+<h2>Context</h2>
+<ul>
+ <li>Client requests to use RDBMS since they are familiar with RDBMS.</li>
+ <li>App need a reliable and scalable database solution for our new project. The database should support serverless architecture, provide robust data management capabilities, and integrate seamlessly with our existing infrastructure.</li>
+</ul>
+<h2>Decision</h2>
+<p>D1 which built on top of SQLite will be used as the RDBMS for the application.</p>
+<h2>Consequences</h2>
+<ul>
+ <li>
+  <p><strong>Positive:</strong> D1 supports serverless architecture, allowing us to build and deploy applications without managing underlying server infrastructure.</p></li>
+ <li>
+  <p><strong>Positive:</strong> D1 is designed to handle high scalability, making it suitable for applications with varying loads and ensuring performance remains consistent.</p></li>
+ <li>
+  <p><strong>Positive:</strong> The serverless nature of D1 can lead to cost savings, as we only pay for what we use, avoiding the need for over-provisioning.</p></li>
+ <li>
+  <p><strong>Negative:</strong> D1, being based on SQLite, supports a limited set of data types compared to other databases like PostgreSQL or MySQL.</p></li>
+ <li>
+  <p><strong>Negative:</strong> D1, being based on SQLite, supports a limited set of data types compared to other databases like PostgreSQL or MySQL.</p></li>
+</ul></div>
         </div>
       </div>
     </div>

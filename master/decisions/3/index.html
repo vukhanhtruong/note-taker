@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Note Taker System | Note Taker App</title>
+    <title>Clean Architecture | Note Taker App</title>
     <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
     <link href="../../../style.css" rel="stylesheet">
     <link href="./../../style-branding.css" rel="stylesheet">
@@ -31,48 +31,30 @@
       <aside class="menu p-3">
         <p class="menu-label">General</p>
         <ul class="menu-list has-site-branding">
-          <li><a href="../../" class="">Home</a><a href="../../decisions/" class="">Decisions</a><a href="../../software-systems/" class="">Software Systems</a><a href="../../&gt;-code-level-class-diagram/" class="">&gt; Code-Level Class Diagram</a><a href="../../&gt;&gt;-note/" class="">&gt;&gt; Note</a><a href="../../&gt;&gt;-user/" class="">&gt;&gt; User</a></li>
+          <li><a href="../../" class="">Home</a><a href="../" class="is-active">Decisions</a><a href="../../software-systems/" class="">Software Systems</a><a href="../../&gt;-code-level-class-diagram/" class="">&gt; Code-Level Class Diagram</a><a href="../../&gt;&gt;-note/" class="">&gt;&gt; Note</a><a href="../../&gt;&gt;-user/" class="">&gt;&gt; User</a></li>
         </ul>
         <p class="menu-label">Software systems</p>
         <ul class="menu-list has-site-branding">
-          <li><a href="../" class="is-active">Note Taker System</a></li>
+          <li><a href="../../note-taker-system/" class="">Note Taker System</a></li>
         </ul>
       </aside>
       <div class="container is-fluid">
-        <h1 class="title mt-3">Note Taker System</h1>
-        <h2 class="subtitle">Allows users to sign up, sign in, and manage notes.</h2>
-        <div class="tabs mt-3">
-          <ul class="is-flex-wrap-wrap is-flex-shrink-1 is-flex-grow-0">
-            <li><a href="../" class="">Info</a></li>
-            <li><a href="../context/" class="">Context views</a></li>
-            <li><a href="../container/" class="">Container views</a></li>
-            <li><a href="../component/backend-api/" class="">Component views</a></li>
-            <li class="is-active"><a href="./" class="is-active">Dependencies</a></li>
-          </ul>
-        </div>
         <div class="content p-3">
-          <h2>Inbound</h2>
-          <table class="table is-fullwidth">
-            <thead>
-              <tr>
-                <th class="is-one-fourth"><span class="">System</span></th>
-                <th class="is-two-fourth"><span class="">Description</span></th>
-                <th><span class="">Technology</span></th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-          <h2>Outbound</h2>
-          <table class="table is-fullwidth">
-            <thead>
-              <tr>
-                <th class="is-one-fourth"><span class="">System</span></th>
-                <th class="is-two-fourth"><span class="">Description</span></th>
-                <th><span class="">Technology</span></th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+          <div><h1>3. Clean Architecture</h1>
+<p>Date: 2024-12-12</p>
+<h2>Status</h2>
+<p>Accepted</p>
+<h3>Context</h3>
+<p>The application needs to be maintainable, testable, and adaptable to future changes. The architecture should enforce separation of concerns, allowing independent development, testing, and scaling of different application layers (e.g., UI, business logic, data access).</p>
+<h3>Decision</h3>
+<p>The project will follow Clean Architecture principles.</p>
+<h3>Consequences</h3>
+<ul>
+ <li><strong>Positive:</strong> Clean Architecture promotes separation of concerns, making the system more maintainable and adaptable to changes.</li>
+ <li><strong>Positive:</strong> The use of interfaces for dependency injection enables easier testing and the ability to swap implementations (e.g., database, external services) without affecting other layers.</li>
+ <li><strong>Positive:</strong> The application is structured in layers, with the inner layers (business logic) being independent of outer layers (UI, frameworks, databases), ensuring that the core business logic is not tied to specific technologies.</li>
+ <li><strong>Negative:</strong> Initial setup and understanding of the architecture might require more effort, especially for developers new to Clean Architecture.</li>
+</ul></div>
         </div>
       </div>
     </div>

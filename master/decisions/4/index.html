@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API Design with RESTful Principles and OpenAPI Documentation | Note Taker App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
+    <link href="../../../style.css" rel="stylesheet">
+    <link href="./../../style-branding.css" rel="stylesheet">
+    <script type="text/javascript" src="../../../modal.js"></script>
+    <script type="text/javascript" src="../../../svg-modal.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../../../header.js"></script>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand has-site-branding"><a href="../../" class="navbar-item"><span class="has-text-weight-semibold has-site-branding">Note Taker App</span></a></div>
+      <div class="navbar-menu has-site-branding">
+        <div class="navbar-end">
+          <div class="navbar-item"><input class="input is-small is-rounded" id="search" type="search" size="30" maxlength="50" placeholder="Search..." onkeyup="redirect(event, value, '../../search/')"></div>
+          <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link has-site-branding">master</a>
+            <div class="navbar-dropdown is-right"><a href="../../../master/" class="navbar-item">master</a>
+              <hr class="navbar-divider">
+              <div class="navbar-item has-text-grey-light"><span>v</span><span>0.0.0</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="site-layout" id="site">
+      <aside class="menu p-3">
+        <p class="menu-label">General</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="../../" class="">Home</a><a href="../" class="is-active">Decisions</a><a href="../../software-systems/" class="">Software Systems</a><a href="../../&gt;-code-level-class-diagram/" class="">&gt; Code-Level Class Diagram</a><a href="../../&gt;&gt;-note/" class="">&gt;&gt; Note</a><a href="../../&gt;&gt;-user/" class="">&gt;&gt; User</a></li>
+        </ul>
+        <p class="menu-label">Software systems</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="../../note-taker-system/" class="">Note Taker System</a></li>
+        </ul>
+      </aside>
+      <div class="container is-fluid">
+        <div class="content p-3">
+          <div><h1>4. API Design with RESTful Principles and OpenAPI Documentation</h1>
+<p>Date: 2024-12-12</p>
+<h2>Status</h2>
+<p>Accepted</p>
+<h2>Context</h2>
+<p>The application requires a well-defined interface for communication between the frontend and backend. The API should be easy to use, scalable, and adhere to web standards. Additionally, there is a need to ensure that the API is well-documented, standardized, and easy to integrate with other systems.</p>
+<h2>Decision</h2>
+<p>The API will be designed following RESTful principles and documented using the OpenAPI standard. Swagger will be used to generate and maintain the API documentation.</p>
+<h2>Consequences</h2>
+<ul>
+ <li><strong>Positive:</strong> A RESTful API design aligns with web standards and is widely understood, making it easier for frontend developers and external systems to interact with the backend.</li>
+ <li><strong>Positive:</strong> RESTful APIs are stateless, which simplifies the server-side logic and improves scalability.</li>
+ <li><strong>Positive:</strong> The use of OpenAPI ensures that the API is described in a standard format, which facilitates integration with other systems and tools.</li>
+ <li><strong>Positive:</strong> Swagger provides an interactive API documentation interface, making it easier for developers to explore and test the API endpoints.</li>
+ <li><strong>Positive:</strong> The use of OpenAPI and Swagger promotes consistency in API design, helps in generating client libraries, and ensures that the documentation stays up-to-date with the actual API implementation.</li>
+ <li><strong>Negative:</strong> The additional step of maintaining OpenAPI documentation might introduce overhead, particularly if not automated as part of the development process.</li>
+ <li><strong>Negative:</strong> Developers need to be familiar with OpenAPI specifications and Swagger tools, which could require some learning and adaptation time.</li>
+</ul>
+<h3>Implementation Details</h3>
+<ul>
+ <li><strong>OpenAPI Specification:</strong> The API will be described using the OpenAPI 3.0 specification. This will include defining endpoints, request/response formats, authentication mechanisms, and error codes.</li>
+ <li><strong>Swagger Integration:</strong> Swagger will be integrated into the project to automatically generate API documentation from the OpenAPI specification. This documentation will be available for developers and external users to explore the API.</li>
+ <li><strong>Automation:</strong> The OpenAPI documentation will be generated as part of the CI/CD pipeline to ensure it remains consistent with the actual API implementation.</li>
+ <li><strong>Client Libraries:</strong> The OpenAPI specification can be used to generate client libraries in various programming languages, simplifying integration for external developers.</li>
+</ul>
+<h3>Tools and Technologies</h3>
+<ul>
+ <li><strong>HonoJS with Swagger Module:</strong> The HonoJS framework will utilize the <a href="https://chanfana.pages.dev/routers/hono/">chanfana library</a> to generate the OpenAPI specification and Swagger UI.</li>
+ <li><strong>Swagger UI:</strong> A self-hosted Swagger UI will be provided as part of the development environment for easy access to the API documentation.</li>
+</ul></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../../../reformat-mermaid.js"></script>
+    <script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.esm.min.mjs';</script>
+  </body>
+</html>

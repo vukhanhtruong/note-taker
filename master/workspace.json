@@ -2,6 +2,49 @@
   "configuration" : { },
   "description" : "C4 Model for a simple note-taker application",
   "documentation" : {
+    "decisions" : [ {
+      "content" : "# 1. Use of TypeScript Across the Stack\n\nDate: 2024-12-12\n\n## Status\n\nAccepted (Proposed | Accepted | Deprecated)\n\n## Context\n\nBoth frontend (React) and backend (HonojS) are built using TypeScript. Adding type safety could help prevent runtime errors and improve the development experience by providing better tooling and code clarity.\n\n## Decision\n\nTypeScript will be used across the stack for both the frontend and backend.\n\n## Consequences\n\n- **Positive:** TypeScript’s static type checking helps catch errors early in the development process, improving code quality.\n- **Positive:** TypeScript enhances the developer experience with features like autocompletion, refactoring tools, and improved navigation.\n- **Positive:** Using TypeScript across the stack ensures consistency and better communication between frontend and backend teams.\n- **Negative:** TypeScript introduces an additional layer of complexity, and the team will need to manage type definitions and configurations, which might slow down initial development.\n",
+      "date" : "2024-12-12T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "1",
+      "status" : "Accepted",
+      "title" : "Use of TypeScript Across the Stack"
+    }, {
+      "content" : "# 2. Choosing Hono.js with Cloudflare Workers\n\nDate: 2024-12-12\n\n## Status\n\nAccepted\n\n## Context\n\nWe need a lightweight and fast web framework for our new note-taking application. The framework should support serverless deployment and be easy to work with for both development and deployment.\n\n## Decision\n\nHonoJS will be used for developing the Backend API.\n\n## Consequences\n\n- **Positive:** Hono.js is designed to be ultrafast, making it ideal for high-performance applications.\n- **Positive:** Using TypeScript with HonoJS ensures type safety and consistency.\n- **Positive:** Cloudflare Workers provide a scalable and reliable edge runtime, allowing us to deploy our application globally with low latency. These workers are functions running at the edge, meaning they are executed closer to the user for faster response times. Using Cloudflare Workers means we can focus on writing code without worrying about server management.\n\n- **Negative:** Need to ensure compatibility of chosen libraries with the Cloudflare Workers environment\n",
+      "date" : "2024-12-12T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "2",
+      "status" : "Accepted",
+      "title" : "Choosing Hono.js with Cloudflare Workers"
+    }, {
+      "content" : "# 3. Clean Architecture\n\nDate: 2024-12-12\n\n## Status\n\nAccepted\n\n### Context\n\nThe application needs to be maintainable, testable, and adaptable to future changes. The architecture should enforce separation of concerns, allowing independent development, testing, and scaling of different application layers (e.g., UI, business logic, data access).\n\n### Decision\n\nThe project will follow Clean Architecture principles.\n\n### Consequences\n\n- **Positive:** Clean Architecture promotes separation of concerns, making the system more maintainable and adaptable to changes.\n- **Positive:** The use of interfaces for dependency injection enables easier testing and the ability to swap implementations (e.g., database, external services) without affecting other layers.\n- **Positive:** The application is structured in layers, with the inner layers (business logic) being independent of outer layers (UI, frameworks, databases), ensuring that the core business logic is not tied to specific technologies.\n- **Negative:** Initial setup and understanding of the architecture might require more effort, especially for developers new to Clean Architecture.\n",
+      "date" : "2024-12-12T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "3",
+      "status" : "Accepted",
+      "title" : "Clean Architecture"
+    }, {
+      "content" : "# 4. API Design with RESTful Principles and OpenAPI Documentation\n\nDate: 2024-12-12\n\n## Status\n\nAccepted\n\n## Context\n\nThe application requires a well-defined interface for communication between the frontend and backend. The API should be easy to use, scalable, and adhere to web standards. Additionally, there is a need to ensure that the API is well-documented, standardized, and easy to integrate with other systems.\n\n## Decision\n\nThe API will be designed following RESTful principles and documented using the OpenAPI standard. Swagger will be used to generate and maintain the API documentation.\n\n## Consequences\n\n- **Positive:** A RESTful API design aligns with web standards and is widely understood, making it easier for frontend developers and external systems to interact with the backend.\n- **Positive:** RESTful APIs are stateless, which simplifies the server-side logic and improves scalability.\n- **Positive:** The use of OpenAPI ensures that the API is described in a standard format, which facilitates integration with other systems and tools.\n- **Positive:** Swagger provides an interactive API documentation interface, making it easier for developers to explore and test the API endpoints.\n- **Positive:** The use of OpenAPI and Swagger promotes consistency in API design, helps in generating client libraries, and ensures that the documentation stays up-to-date with the actual API implementation.\n- **Negative:** The additional step of maintaining OpenAPI documentation might introduce overhead, particularly if not automated as part of the development process.\n- **Negative:** Developers need to be familiar with OpenAPI specifications and Swagger tools, which could require some learning and adaptation time.\n\n### Implementation Details\n\n- **OpenAPI Specification:** The API will be described using the OpenAPI 3.0 specification. This will include defining endpoints, request/response formats, authentication mechanisms, and error codes.\n- **Swagger Integration:** Swagger will be integrated into the project to automatically generate API documentation from the OpenAPI specification. This documentation will be available for developers and external users to explore the API.\n- **Automation:** The OpenAPI documentation will be generated as part of the CI/CD pipeline to ensure it remains consistent with the actual API implementation.\n- **Client Libraries:** The OpenAPI specification can be used to generate client libraries in various programming languages, simplifying integration for external developers.\n\n### Tools and Technologies\n\n- **HonoJS with Swagger Module:** The HonoJS framework will utilize the [chanfana library](https://chanfana.pages.dev/routers/hono/) to generate the OpenAPI specification and Swagger UI.\n- **Swagger UI:** A self-hosted Swagger UI will be provided as part of the development environment for easy access to the API documentation.\n",
+      "date" : "2024-12-12T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "4",
+      "status" : "Accepted",
+      "title" : "API Design with RESTful Principles and OpenAPI Documentation"
+    }, {
+      "content" : "# 5. Use of React for Frontend Development\n\nDate: 2024-12-12\n\n## Status\n\nDeprecated\n\n### Context\n\nThe project requires a modern, responsive, and interactive frontend to provide a smooth user experience. The frontend needs to be maintainable, scalable, and capable of interacting efficiently with a RESTful API.\n\n### Decision\n\nReact will be used as the frontend framework for the web application.\n\n### Consequences\n\n- **Positive:** React's component-based architecture will help in building reusable UI components, improving code maintainability and reusability.\n- **Positive:** React has a strong ecosystem which can be used if the application grows in complexity.\n- **Positive:** React's virtual DOM provides efficient updates and rendering, which enhances the application's performance.\n- **Negative:** The learning curve for new developers might be steep if they are not familiar with React.\n",
+      "date" : "2024-12-12T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "5",
+      "status" : "Deprecated",
+      "title" : "Use of React for Frontend Development"
+    }, {
+      "content" : "# 6. Use of D1 database as the Relational Database Management System (RDBMS)\n\nDate: 2024-12-12\n\n## Status\n\nProposed\n\n## Context\n\n- Client requests to use RDBMS since they are familiar with RDBMS.\n- App need a reliable and scalable database solution for our new project. The database should support serverless architecture, provide robust data management capabilities, and integrate seamlessly with our existing infrastructure.\n\n## Decision\n\nD1 which built on top of SQLite will be used as the RDBMS for the application.\n\n## Consequences\n\n- **Positive:** D1 supports serverless architecture, allowing us to build and deploy applications without managing underlying server infrastructure.\n- **Positive:** D1 is designed to handle high scalability, making it suitable for applications with varying loads and ensuring performance remains consistent.\n- **Positive:** The serverless nature of D1 can lead to cost savings, as we only pay for what we use, avoiding the need for over-provisioning.\n\n- **Negative:** D1, being based on SQLite, supports a limited set of data types compared to other databases like PostgreSQL or MySQL.\n- **Negative:** D1, being based on SQLite, supports a limited set of data types compared to other databases like PostgreSQL or MySQL.\n",
+      "date" : "2024-12-12T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "6",
+      "status" : "Proposed",
+      "title" : "Use of D1 database as the Relational Database Management System (RDBMS)"
+    } ],
     "sections" : [ {
       "content" : "# Note Taker Architecture\n\nThis site contains the C4 Model for a simple note-taking application\n",
       "filename" : "01-index.md",
@@ -9,7 +52,7 @@
       "order" : 1,
       "title" : ""
     }, {
-      "content" : "# > Code-Level Class Diagram\n\nThe code designed by following Clean Architecture diagram, so the color-code is matter, pay attention please.\n\n![](/clean-arch.png)\n\nBelow are links to various code-level diagrams. Each link takes you to a dedicated page with detailed diagrams.\n\n- [User Diagram](/>>-user)\n- [Note Diagram](/>>-note)\n",
+      "content" : "# > Code-Level Class Diagram\n\nThe code designed by following Clean Architecture diagram, so the **color-code** is matter, pay attention please.\n\n![](/clean-arch.png)\n\nBelow are links to various code-level diagrams. Each link takes you to a dedicated page with detailed diagrams.\n\n- [User Diagram](/>>-user)\n- [Note Diagram](/>>-note)\n",
       "filename" : "02-class-diagrams.md",
       "format" : "Markdown",
       "order" : 2,
@@ -43,7 +86,7 @@
         "destinationId" : "3",
         "id" : "11",
         "properties" : {
-          "structurizr.dsl.identifier" : "56d9d4e2-25d1-4299-8d71-15f20e946b86"
+          "structurizr.dsl.identifier" : "eb6b3793-0b0e-4560-bcc2-7f7995cf2a77"
         },
         "sourceId" : "1",
         "tags" : "Relationship"
@@ -70,7 +113,7 @@
           "destinationId" : "4",
           "id" : "13",
           "properties" : {
-            "structurizr.dsl.identifier" : "69f5b8b2-0091-41a7-84ca-276657818d78"
+            "structurizr.dsl.identifier" : "ffcac621-8f01-42f7-80eb-1aadc55188c6"
           },
           "sourceId" : "3",
           "tags" : "Relationship"
@@ -91,7 +134,7 @@
             "destinationId" : "7",
             "id" : "14",
             "properties" : {
-              "structurizr.dsl.identifier" : "f0b2956d-d587-4aaf-9c5b-615d6eb22139"
+              "structurizr.dsl.identifier" : "491276c4-24c5-4d53-92d9-6df28725e1a6"
             },
             "sourceId" : "5",
             "tags" : "Relationship"
@@ -111,7 +154,7 @@
             "destinationId" : "8",
             "id" : "15",
             "properties" : {
-              "structurizr.dsl.identifier" : "4ef5cb77-eaac-4a9d-8207-03bab4802a78"
+              "structurizr.dsl.identifier" : "7d0f827e-94f5-49ed-8a4c-9625e91711bc"
             },
             "sourceId" : "6",
             "tags" : "Relationship"
@@ -130,7 +173,7 @@
             "destinationId" : "9",
             "id" : "16",
             "properties" : {
-              "structurizr.dsl.identifier" : "631af76d-d7f4-4de9-8442-aa5b5e9907e6"
+              "structurizr.dsl.identifier" : "8b9d1106-e3f2-4e7d-aa66-5343fde0cac0"
             },
             "sourceId" : "7",
             "tags" : "Relationship"
@@ -149,7 +192,7 @@
             "destinationId" : "9",
             "id" : "17",
             "properties" : {
-              "structurizr.dsl.identifier" : "0074ccbe-57f6-4871-b140-4629614fd9eb"
+              "structurizr.dsl.identifier" : "2d759c6e-51f5-488a-bb81-9e92fa00c63c"
             },
             "sourceId" : "8",
             "tags" : "Relationship"
@@ -169,7 +212,7 @@
             "destinationId" : "10",
             "id" : "18",
             "properties" : {
-              "structurizr.dsl.identifier" : "ccdeea67-e2e1-4cee-9803-e05fd388cad3"
+              "structurizr.dsl.identifier" : "d87c6d79-8aec-4c67-8f17-efd4162df87e"
             },
             "sourceId" : "9",
             "tags" : "Relationship"
@@ -217,7 +260,7 @@
   },
   "name" : "Note Taker App",
   "properties" : {
-    "structurizr.dsl" : "d29ya3NwYWNlICJOb3RlIFRha2VyIEFwcCIgIkM0IE1vZGVsIGZvciBhIHNpbXBsZSBub3RlLXRha2VyIGFwcGxpY2F0aW9uIiB7CgogICAgIWRvY3MgImRvY3MiCgogICAgbW9kZWwgewogICAgICAgIHVzZXIgPSBwZXJzb24gIlVzZXIiICJBIHBlcnNvbiB3aG8gd3JpdGVzLCBlZGl0cywgYW5kIHNoYXJlcyBub3Rlcy4iCiAgICAgICAgCiAgICAgICAgbm90ZVRha2VyU3lzdGVtID0gc29mdHdhcmVTeXN0ZW0gIk5vdGUgVGFrZXIgU3lzdGVtIiAiQWxsb3dzIHVzZXJzIHRvIHNpZ24gdXAsIHNpZ24gaW4sIGFuZCBtYW5hZ2Ugbm90ZXMuIiB7CiAgICAgICAgICAgIHdlYkFwcCA9IGNvbnRhaW5lciAiUmVhY3QgRnJvbnRlbmQiICJBIFJlYWN0IFNQQSBmb3IgdXNlciBpbnRlcmFjdGlvbnMuIiAiUmVhY3QsIEJyb3dzZXIiCgogICAgICAgICAgICBiYWNrZW5kID0gY29udGFpbmVyICJCYWNrZW5kIEFQSSIgIkhhbmRsZXMgYXV0aCwgbm90ZSBDUlVELCBhbmQgc2hhcmluZy4iICJOb2RlLmpzLCBIb25vLCBDbG91ZGZsYXJlIFdvcmtlcnMiIHsKCiAgICAgICAgICAgICAgICBub3RlQ29udHJvbGxlciA9IGNvbXBvbmVudCAiTm90ZSBDb250cm9sbGVyIiAiSW52b2tlcyB1c2UgY2FzZXMgZm9yIG5vdGVzLiIgIkhvbm8iCiAgICAgICAgICAgICAgICB1c2VyQ29udHJvbGxlciA9IGNvbXBvbmVudCAiVXNlciBDb250cm9sbGVyIiAiSW52b2tlcyB1c2UgY2FzZXMgZm9yIHVzZXIgYXV0aGVudGljYXRpb24uIiAiSG9ubyIKCiAgICAgICAgICAgICAgICBub3RlTW9kdWxlID0gY29tcG9uZW50ICJOb3RlIE1vZHVsZSIgIkltcGxlbWVudHMgdXNlIGNhc2VzIGZvciBub3RlLiIgIkNsZWFuIEFyY2hpdGVjdHVyZSIKICAgICAgICAgICAgICAgIHVzZXJNb2R1bGUgPSBjb21wb25lbnQgIlVzZXIgTW9kdWxlIiAiSW1wbGVtZW50cyB1c2UgY2FzZXMgZm9yIHVzZXIuIiAiQ2xlYW4gQXJjaGl0ZWN0dXJlIgoKICAgICAgICAgICAgICAgIGNvbXBvbmVudERhdGFBY2Nlc3MgPSBjb21wb25lbnQgIkRhdGEgQWNjZXNzIExheWVyIiAiSW50ZXJhY3RzIHdpdGggdGhlIEQxIGRhdGFiYXNlLiIgIlNRTCBRdWVyaWVzLyBPUk0gL0QxIFNESyIKICAgICAgICAgICAgfQoKICAgICAgICAgICAgZGF0YWJhc2UgPSBjb250YWluZXIgIkQxIERhdGFiYXNlIiAiU3RvcmVzIHVzZXJzLCBub3RlcywgYW5kIHNoYXJpbmcuIiAiQ2xvdWRmbGFyZSBEMSIKICAgICAgICB9CgogICAgICAgIC8vIFJlbGF0aW9uc2hpcHMKICAgICAgICB1c2VyIC0+IHdlYkFwcCAiVXNlcyB2aWEgYnJvd3NlciIKICAgICAgICB3ZWJBcHAgLT4gYmFja2VuZCAiU2VuZHMgcmVxdWVzdHMgKENSVUQsIEF1dGgsIFNoYXJlKSIKCiAgICAgICAgbm90ZUNvbnRyb2xsZXIgLT4gbm90ZU1vZHVsZSAiSW52b2tlcyBub3RlcydzIHVzZSBjYXNlcyIKICAgICAgICB1c2VyQ29udHJvbGxlciAtPiB1c2VyTW9kdWxlICJJbnZva2VzIHVzZXJzJ3MgdXNlIGNhc2VzIgoKICAgICAgICBub3RlTW9kdWxlIC0+IGNvbXBvbmVudERhdGFBY2Nlc3MgCiAgICAgICAgdXNlck1vZHVsZSAtPiBjb21wb25lbnREYXRhQWNjZXNzIAogICAgICAgIGNvbXBvbmVudERhdGFBY2Nlc3MgLT4gZGF0YWJhc2UgIkV4ZWN1dGVzIHF1ZXJpZXMiCiAgICB9CgogICAgdmlld3MgewogICAgICAgIHN5c3RlbWxhbmRzY2FwZSAiU3lzdGVtTGFuZHNjYXBlIiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgfQoKICAgICAgICBzeXN0ZW1jb250ZXh0IG5vdGVUYWtlclN5c3RlbSAiU3lzdGVtQ29udGV4dCIgewogICAgICAgICAgICBkZXNjcmlwdGlvbiAiU3lzdGVtIENvbnRleHQgZGlhZ3JhbSBmb3IgdGhlIE5vdGUgVGFrZXIgQXBwIgogICAgICAgICAgICBpbmNsdWRlIHVzZXIKICAgICAgICAgICAgaW5jbHVkZSBub3RlVGFrZXJTeXN0ZW0KICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgIH0KCiAgICAgICAgY29udGFpbmVyIG5vdGVUYWtlclN5c3RlbSAiQ29udGFpbmVycyIgewogICAgICAgICAgICBkZXNjcmlwdGlvbiAiQ29udGFpbmVyIGRpYWdyYW0gc2hvd2luZyBtYWpvciBlbGVtZW50cyIKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICB9CgogICAgICAgIGNvbXBvbmVudCBiYWNrZW5kICJCYWNrZW5kQ29tcG9uZW50cyIgewogICAgICAgICAgICBkZXNjcmlwdGlvbiAiQ29tcG9uZW50IGRpYWdyYW0gZm9yIHRoZSBCYWNrZW5kIEFQSSIKICAgICAgICAgICAgaW5jbHVkZSAqIAogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgfQoKCiAgICAgICAgc3R5bGVzIHsKICAgICAgICAgICAgZWxlbWVudCAiU29mdHdhcmUgU3lzdGVtIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMxMTY4YmQKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJQZXJzb24iIHsKICAgICAgICAgICAgICAgIHNoYXBlIHBlcnNvbgogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjMDg0MjdCCiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGVsZW1lbnQgIlNvZnR3YXJlIFN5c3RlbSIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjMTE2OGJkCiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGVsZW1lbnQgIkNvbnRhaW5lciIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjNDM4ZGQ1CiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGVsZW1lbnQgIkNvbXBvbmVudCIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjODViYmYwCiAgICAgICAgICAgICAgICBjb2xvciAjMDAwMDAwCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9Cn0K"
+    "structurizr.dsl" : "d29ya3NwYWNlICJOb3RlIFRha2VyIEFwcCIgIkM0IE1vZGVsIGZvciBhIHNpbXBsZSBub3RlLXRha2VyIGFwcGxpY2F0aW9uIiB7CgogICAgIWFkcnMgImFkcnMiCiAgICAhZG9jcyAiZG9jcyIKCiAgICBtb2RlbCB7CiAgICAgICAgdXNlciA9IHBlcnNvbiAiVXNlciIgIkEgcGVyc29uIHdobyB3cml0ZXMsIGVkaXRzLCBhbmQgc2hhcmVzIG5vdGVzLiIKICAgICAgICAKICAgICAgICBub3RlVGFrZXJTeXN0ZW0gPSBzb2Z0d2FyZVN5c3RlbSAiTm90ZSBUYWtlciBTeXN0ZW0iICJBbGxvd3MgdXNlcnMgdG8gc2lnbiB1cCwgc2lnbiBpbiwgYW5kIG1hbmFnZSBub3Rlcy4iIHsKICAgICAgICAgICAgd2ViQXBwID0gY29udGFpbmVyICJSZWFjdCBGcm9udGVuZCIgIkEgUmVhY3QgU1BBIGZvciB1c2VyIGludGVyYWN0aW9ucy4iICJSZWFjdCwgQnJvd3NlciIKCiAgICAgICAgICAgIGJhY2tlbmQgPSBjb250YWluZXIgIkJhY2tlbmQgQVBJIiAiSGFuZGxlcyBhdXRoLCBub3RlIENSVUQsIGFuZCBzaGFyaW5nLiIgIk5vZGUuanMsIEhvbm8sIENsb3VkZmxhcmUgV29ya2VycyIgewoKICAgICAgICAgICAgICAgIG5vdGVDb250cm9sbGVyID0gY29tcG9uZW50ICJOb3RlIENvbnRyb2xsZXIiICJJbnZva2VzIHVzZSBjYXNlcyBmb3Igbm90ZXMuIiAiSG9ubyIKICAgICAgICAgICAgICAgIHVzZXJDb250cm9sbGVyID0gY29tcG9uZW50ICJVc2VyIENvbnRyb2xsZXIiICJJbnZva2VzIHVzZSBjYXNlcyBmb3IgdXNlciBhdXRoZW50aWNhdGlvbi4iICJIb25vIgoKICAgICAgICAgICAgICAgIG5vdGVNb2R1bGUgPSBjb21wb25lbnQgIk5vdGUgTW9kdWxlIiAiSW1wbGVtZW50cyB1c2UgY2FzZXMgZm9yIG5vdGUuIiAiQ2xlYW4gQXJjaGl0ZWN0dXJlIgogICAgICAgICAgICAgICAgdXNlck1vZHVsZSA9IGNvbXBvbmVudCAiVXNlciBNb2R1bGUiICJJbXBsZW1lbnRzIHVzZSBjYXNlcyBmb3IgdXNlci4iICJDbGVhbiBBcmNoaXRlY3R1cmUiCgogICAgICAgICAgICAgICAgY29tcG9uZW50RGF0YUFjY2VzcyA9IGNvbXBvbmVudCAiRGF0YSBBY2Nlc3MgTGF5ZXIiICJJbnRlcmFjdHMgd2l0aCB0aGUgRDEgZGF0YWJhc2UuIiAiU1FMIFF1ZXJpZXMvIE9STSAvRDEgU0RLIgogICAgICAgICAgICB9CgogICAgICAgICAgICBkYXRhYmFzZSA9IGNvbnRhaW5lciAiRDEgRGF0YWJhc2UiICJTdG9yZXMgdXNlcnMsIG5vdGVzLCBhbmQgc2hhcmluZy4iICJDbG91ZGZsYXJlIEQxIgogICAgICAgIH0KCiAgICAgICAgLy8gUmVsYXRpb25zaGlwcwogICAgICAgIHVzZXIgLT4gd2ViQXBwICJVc2VzIHZpYSBicm93c2VyIgogICAgICAgIHdlYkFwcCAtPiBiYWNrZW5kICJTZW5kcyByZXF1ZXN0cyAoQ1JVRCwgQXV0aCwgU2hhcmUpIgoKICAgICAgICBub3RlQ29udHJvbGxlciAtPiBub3RlTW9kdWxlICJJbnZva2VzIG5vdGVzJ3MgdXNlIGNhc2VzIgogICAgICAgIHVzZXJDb250cm9sbGVyIC0+IHVzZXJNb2R1bGUgIkludm9rZXMgdXNlcnMncyB1c2UgY2FzZXMiCgogICAgICAgIG5vdGVNb2R1bGUgLT4gY29tcG9uZW50RGF0YUFjY2VzcyAKICAgICAgICB1c2VyTW9kdWxlIC0+IGNvbXBvbmVudERhdGFBY2Nlc3MgCiAgICAgICAgY29tcG9uZW50RGF0YUFjY2VzcyAtPiBkYXRhYmFzZSAiRXhlY3V0ZXMgcXVlcmllcyIKICAgIH0KCiAgICB2aWV3cyB7CiAgICAgICAgc3lzdGVtbGFuZHNjYXBlICJTeXN0ZW1MYW5kc2NhcGUiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICB9CgogICAgICAgIHN5c3RlbWNvbnRleHQgbm90ZVRha2VyU3lzdGVtICJTeXN0ZW1Db250ZXh0IiB7CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJTeXN0ZW0gQ29udGV4dCBkaWFncmFtIGZvciB0aGUgTm90ZSBUYWtlciBBcHAiCiAgICAgICAgICAgIGluY2x1ZGUgdXNlcgogICAgICAgICAgICBpbmNsdWRlIG5vdGVUYWtlclN5c3RlbQogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgbm90ZVRha2VyU3lzdGVtICJDb250YWluZXJzIiB7CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJDb250YWluZXIgZGlhZ3JhbSBzaG93aW5nIG1ham9yIGVsZW1lbnRzIgogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgIH0KCiAgICAgICAgY29tcG9uZW50IGJhY2tlbmQgIkJhY2tlbmRDb21wb25lbnRzIiB7CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJDb21wb25lbnQgZGlhZ3JhbSBmb3IgdGhlIEJhY2tlbmQgQVBJIgogICAgICAgICAgICBpbmNsdWRlICogCiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICB9CgoKICAgICAgICBzdHlsZXMgewogICAgICAgICAgICBlbGVtZW50ICJTb2Z0d2FyZSBTeXN0ZW0iIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzExNjhiZAogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIlBlcnNvbiIgewogICAgICAgICAgICAgICAgc2hhcGUgcGVyc29uCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMwODQyN0IKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQoKICAgICAgICAgICAgZWxlbWVudCAiU29mdHdhcmUgU3lzdGVtIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMxMTY4YmQKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQoKICAgICAgICAgICAgZWxlbWVudCAiQ29udGFpbmVyIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM0MzhkZDUKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQoKICAgICAgICAgICAgZWxlbWVudCAiQ29tcG9uZW50IiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM4NWJiZjAKICAgICAgICAgICAgICAgIGNvbG9yICMwMDAwMDAKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KfQo="
   },
   "views" : {
     "componentViews" : [ {
