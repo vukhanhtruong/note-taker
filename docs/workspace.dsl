@@ -1,27 +1,31 @@
 workspace "Note Taker App" "C4 Model for a simple note-taker application" {
 
+    !adrs "adrs"
     !docs "docs"
 
     model {
         user = person "User" "A person who writes, edits, and shares notes."
         
-        noteTakerSystem = softwareSystem "Note Taker System" "Allows users to sign up, sign in, and manage notes." {
-            webApp = container "React Frontend" "A React SPA for user interactions." "React, Browser"
+        group "Application" {
 
-            backend = container "Backend API" "Handles auth, note CRUD, and sharing." "Node.js, Hono, Cloudflare Workers" {
+            noteTakerSystem = softwareSystem "Note Taker App" "Allows users to sign up, sign in, and manage notes." {
+                webApp = container "React Frontend" "A React SPA for user interactions." "React, Browser"
 
-                noteController = component "Note Controller" "Invokes use cases for notes." "Hono"
-                userController = component "User Controller" "Invokes use cases for user authentication." "Hono"
+                backend = container "Backend API" "Handles auth, note CRUD, and sharing." "Node.js, Hono, Cloudflare Workers" {
 
-                noteModule = component "Note Module" "Implements use cases for note." "Clean Architecture"
-                userModule = component "User Module" "Implements use cases for user." "Clean Architecture"
+                    noteController = component "Note Controller" "Invokes use cases for notes." "Hono"
+                    userController = component "User Controller" "Invokes use cases for user authentication." "Hono"
 
-                componentDataAccess = component "Data Access Layer" "Interacts with the D1 database." "SQL Queries/ ORM /D1 SDK"
+                    noteModule = component "Note Module" "Implements use cases for note." "Clean Architecture"
+                    userModule = component "User Module" "Implements use cases for user." "Clean Architecture"
+
+                    componentDataAccess = component "Data Access Layer" "Interacts with the D1 database." "SQL Queries/ ORM /D1 SDK"
+                }
             }
 
-            database = container "D1 Database" "Stores users, notes, and sharing." "Cloudflare D1"
-        }
+            database = softwareSystem "D1 Database" "Stores users, notes, and sharing." "Cloudflare D1"
 
+        }
         // Relationships
         user -> webApp "Uses via browser"
         webApp -> backend "Sends requests (CRUD, Auth, Share)"
@@ -31,6 +35,8 @@ workspace "Note Taker App" "C4 Model for a simple note-taker application" {
 
         noteModule -> componentDataAccess 
         userModule -> componentDataAccess 
+
+        noteTakerSystem -> database "Connects"
         componentDataAccess -> database "Executes queries"
     }
 
@@ -42,8 +48,7 @@ workspace "Note Taker App" "C4 Model for a simple note-taker application" {
 
         systemcontext noteTakerSystem "SystemContext" {
             description "System Context diagram for the Note Taker App"
-            include user
-            include noteTakerSystem
+            include *
             autoLayout
         }
 

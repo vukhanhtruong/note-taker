@@ -1,6 +1,9 @@
 # Structurizr DSL Development Server
 
-This repository helps you work with Structurizr DSL to model and visualize software architecture using the C4 Model. It includes instructions for starting a development server and generating a static site using the **Structurizr Site Generator**.
+This repository provides tools and instructions to help you model and visualize software architecture using **Structurizr DSL** and the **C4 Model**. You can start a development server or generate a static site for your architecture diagrams using the **Structurizr Site Generatr**.
+
+- Based on the blog post: [Visualizing Software Architecture with the C4 Model](https://hihoay.substack.com/p/visualizing-software-architecture)
+- [Live Demo](https://vukhanhtruong.github.io/note-taker/master/)
 
 ---
 
@@ -38,12 +41,5 @@ docker run -it --rm -v $(pwd):/var/model ghcr.io/avisi-cloud/structurizr-site-ge
 ```
 
 **Output Directory**: The static site will be generated in the ./build folder.
-**Overwrite Behavior**: If the ./build folder exists, it will be replaced with the newly generated site.
 
-### 3. Deploy to Github pages
-
-```sh
-cp -r dsl/build/site/* docs
-```
-
-Then push the changes to branch named `gh-pages`
+**Overwrite Behavior**: If the `./build` folder exists, it will be replaced with the newly generated site.
