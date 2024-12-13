@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Use of D1 database as the Relational Database Management System (RDBMS) | Note Taker App</title>
+    <title>Use of D1 database as serverless database platform | Note Taker App</title>
     <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
     <link href="../../../style.css" rel="stylesheet">
     <link href="./../../style-branding.css" rel="stylesheet">
@@ -40,17 +40,16 @@
       </aside>
       <div class="container is-fluid">
         <div class="content p-3">
-          <div><h1>6. Use of D1 database as the Relational Database Management System (RDBMS)</h1>
+          <div><h1>6. Use of D1 database as serverless database platform</h1>
 <p>Date: 2024-12-12</p>
 <h2>Status</h2>
 <p>Proposed</p>
 <h2>Context</h2>
 <ul>
- <li>Client requests to use RDBMS since they are familiar with RDBMS.</li>
  <li>App need a reliable and scalable database solution for our new project. The database should support serverless architecture, provide robust data management capabilities, and integrate seamlessly with our existing infrastructure.</li>
 </ul>
 <h2>Decision</h2>
-<p>D1 which built on top of SQLite will be used as the RDBMS for the application.</p>
+<p>D1 which built on top of SQLite will be used as the database for the application.</p>
 <h2>Consequences</h2>
 <ul>
  <li>
@@ -59,8 +58,6 @@
   <p><strong>Positive:</strong> D1 is designed to handle high scalability, making it suitable for applications with varying loads and ensuring performance remains consistent.</p></li>
  <li>
   <p><strong>Positive:</strong> The serverless nature of D1 can lead to cost savings, as we only pay for what we use, avoiding the need for over-provisioning.</p></li>
- <li>
-  <p><strong>Negative:</strong> D1, being based on SQLite, supports a limited set of data types compared to other databases like PostgreSQL or MySQL.</p></li>
  <li>
   <p><strong>Negative:</strong> D1, being based on SQLite, supports a limited set of data types compared to other databases like PostgreSQL or MySQL.</p></li>
 </ul></div>

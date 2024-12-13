@@ -38,12 +38,12 @@
       "status" : "Deprecated",
       "title" : "Use of React for Frontend Development"
     }, {
-      "content" : "# 6. Use of D1 database as the Relational Database Management System (RDBMS)\n\nDate: 2024-12-12\n\n## Status\n\nProposed\n\n## Context\n\n- Client requests to use RDBMS since they are familiar with RDBMS.\n- App need a reliable and scalable database solution for our new project. The database should support serverless architecture, provide robust data management capabilities, and integrate seamlessly with our existing infrastructure.\n\n## Decision\n\nD1 which built on top of SQLite will be used as the RDBMS for the application.\n\n## Consequences\n\n- **Positive:** D1 supports serverless architecture, allowing us to build and deploy applications without managing underlying server infrastructure.\n- **Positive:** D1 is designed to handle high scalability, making it suitable for applications with varying loads and ensuring performance remains consistent.\n- **Positive:** The serverless nature of D1 can lead to cost savings, as we only pay for what we use, avoiding the need for over-provisioning.\n\n- **Negative:** D1, being based on SQLite, supports a limited set of data types compared to other databases like PostgreSQL or MySQL.\n- **Negative:** D1, being based on SQLite, supports a limited set of data types compared to other databases like PostgreSQL or MySQL.\n",
+      "content" : "# 6. Use of D1 database as serverless database platform\n\nDate: 2024-12-12\n\n## Status\n\nProposed\n\n## Context\n\n- App need a reliable and scalable database solution for our new project. The database should support serverless architecture, provide robust data management capabilities, and integrate seamlessly with our existing infrastructure.\n\n## Decision\n\nD1 which built on top of SQLite will be used as the database for the application.\n\n## Consequences\n\n- **Positive:** D1 supports serverless architecture, allowing us to build and deploy applications without managing underlying server infrastructure.\n- **Positive:** D1 is designed to handle high scalability, making it suitable for applications with varying loads and ensuring performance remains consistent.\n- **Positive:** The serverless nature of D1 can lead to cost savings, as we only pay for what we use, avoiding the need for over-provisioning.\n\n- **Negative:** D1, being based on SQLite, supports a limited set of data types compared to other databases like PostgreSQL or MySQL.\n",
       "date" : "2024-12-12T00:00:00Z",
       "format" : "Markdown",
       "id" : "6",
       "status" : "Proposed",
-      "title" : "Use of D1 database as the Relational Database Management System (RDBMS)"
+      "title" : "Use of D1 database as serverless database platform"
     } ],
     "sections" : [ {
       "content" : "# Note Taker Architecture\n\nThis site contains the C4 Model for a simple note-taking application\n",
@@ -86,7 +86,7 @@
         "destinationId" : "3",
         "id" : "11",
         "properties" : {
-          "structurizr.dsl.identifier" : "eb6b3793-0b0e-4560-bcc2-7f7995cf2a77"
+          "structurizr.dsl.identifier" : "ab82ad78-f1ad-4be4-8315-b0b96fede8ca"
         },
         "sourceId" : "1",
         "tags" : "Relationship"
@@ -113,7 +113,7 @@
           "destinationId" : "4",
           "id" : "13",
           "properties" : {
-            "structurizr.dsl.identifier" : "ffcac621-8f01-42f7-80eb-1aadc55188c6"
+            "structurizr.dsl.identifier" : "2699e511-6841-4e81-ba8e-1a6c700d7a3f"
           },
           "sourceId" : "3",
           "tags" : "Relationship"
@@ -134,7 +134,7 @@
             "destinationId" : "7",
             "id" : "14",
             "properties" : {
-              "structurizr.dsl.identifier" : "491276c4-24c5-4d53-92d9-6df28725e1a6"
+              "structurizr.dsl.identifier" : "1542c3f7-dc32-4092-b145-92c9b54a613b"
             },
             "sourceId" : "5",
             "tags" : "Relationship"
@@ -154,7 +154,7 @@
             "destinationId" : "8",
             "id" : "15",
             "properties" : {
-              "structurizr.dsl.identifier" : "7d0f827e-94f5-49ed-8a4c-9625e91711bc"
+              "structurizr.dsl.identifier" : "4604241f-1b6f-4b56-b7a7-89365d571313"
             },
             "sourceId" : "6",
             "tags" : "Relationship"
@@ -173,7 +173,7 @@
             "destinationId" : "9",
             "id" : "16",
             "properties" : {
-              "structurizr.dsl.identifier" : "8b9d1106-e3f2-4e7d-aa66-5343fde0cac0"
+              "structurizr.dsl.identifier" : "224d975c-58f9-42ff-846e-6912cea1d929"
             },
             "sourceId" : "7",
             "tags" : "Relationship"
@@ -192,7 +192,7 @@
             "destinationId" : "9",
             "id" : "17",
             "properties" : {
-              "structurizr.dsl.identifier" : "2d759c6e-51f5-488a-bb81-9e92fa00c63c"
+              "structurizr.dsl.identifier" : "28e2e96b-973e-49d7-b8d5-038cc6f84db3"
             },
             "sourceId" : "8",
             "tags" : "Relationship"
@@ -212,7 +212,7 @@
             "destinationId" : "10",
             "id" : "18",
             "properties" : {
-              "structurizr.dsl.identifier" : "d87c6d79-8aec-4c67-8f17-efd4162df87e"
+              "structurizr.dsl.identifier" : "b46daba9-810d-49c7-9572-67da8287c811"
             },
             "sourceId" : "9",
             "tags" : "Relationship"
