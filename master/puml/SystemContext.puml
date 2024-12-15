@@ -1,16 +1,22 @@
 @startuml
 set separator none
-title Note Taker System - System Context
+title Note Taker App - System Context
 
 top to bottom direction
 
 !include <C4/C4>
 !include <C4/C4_Context>
 
-Person(User, "User", $descr="A person who writes, edits, and shares notes.", $tags="", $link="")
-System(NoteTakerSystem, "Note Taker System", $descr="Allows users to sign up, sign in, and manage notes.", $tags="", $link="")
+AddBoundaryTag("Note Taker Application", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="dashed")
+Boundary(group_1, "Note Taker Application", $tags="Note Taker Application") {
+  System(D1Database, "D1 Database", $descr="Stores users, notes, and sharing.", $tags="", $link="")
+  System(NoteTakerApp, "Note Taker App", $descr="Allows users to sign up, sign in, and manage notes.", $tags="", $link="")
+}
 
-Rel(User, NoteTakerSystem, "Uses via browser", $techn="", $tags="", $link="")
+Person(User, "User", $descr="A person who writes, edits, and shares notes.", $tags="", $link="")
+
+Rel(User, NoteTakerApp, "Uses via browser", $techn="", $tags="", $link="")
+Rel(NoteTakerApp, D1Database, "Connects", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml
