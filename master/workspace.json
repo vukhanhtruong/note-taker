@@ -85,9 +85,6 @@
         "description" : "Uses via browser",
         "destinationId" : "3",
         "id" : "11",
-        "properties" : {
-          "structurizr.dsl.identifier" : "6f8c6c65-3967-4a59-b3d6-4e8a979f135a"
-        },
         "sourceId" : "1",
         "tags" : "Relationship"
       }, {
@@ -112,9 +109,6 @@
           "description" : "Sends requests (CRUD, Auth, Share)",
           "destinationId" : "4",
           "id" : "13",
-          "properties" : {
-            "structurizr.dsl.identifier" : "bc9b2a52-0105-414f-9ae4-472bf8f5a4da"
-          },
           "sourceId" : "3",
           "tags" : "Relationship"
         } ],
@@ -133,9 +127,6 @@
             "description" : "Invokes notes's use cases",
             "destinationId" : "7",
             "id" : "14",
-            "properties" : {
-              "structurizr.dsl.identifier" : "3bc9c1e0-67d2-47f9-bd83-e7ea8c9ea80f"
-            },
             "sourceId" : "5",
             "tags" : "Relationship"
           } ],
@@ -153,9 +144,6 @@
             "description" : "Invokes users's use cases",
             "destinationId" : "8",
             "id" : "15",
-            "properties" : {
-              "structurizr.dsl.identifier" : "7dc16672-1e31-4270-91b9-6500b029fa88"
-            },
             "sourceId" : "6",
             "tags" : "Relationship"
           } ],
@@ -172,9 +160,6 @@
           "relationships" : [ {
             "destinationId" : "9",
             "id" : "16",
-            "properties" : {
-              "structurizr.dsl.identifier" : "1e6b5ada-3a6e-4b38-8d1c-6eee3d237a46"
-            },
             "sourceId" : "7",
             "tags" : "Relationship"
           } ],
@@ -191,9 +176,6 @@
           "relationships" : [ {
             "destinationId" : "9",
             "id" : "17",
-            "properties" : {
-              "structurizr.dsl.identifier" : "dea0afb0-2319-411b-9f45-3a66d8d80cbd"
-            },
             "sourceId" : "8",
             "tags" : "Relationship"
           } ],
@@ -211,9 +193,6 @@
             "description" : "Executes queries",
             "destinationId" : "10",
             "id" : "19",
-            "properties" : {
-              "structurizr.dsl.identifier" : "2935131e-da91-4a6e-a5dc-7d6648796965"
-            },
             "sourceId" : "9",
             "tags" : "Relationship"
           } ],
@@ -250,9 +229,6 @@
         "description" : "Connects",
         "destinationId" : "10",
         "id" : "18",
-        "properties" : {
-          "structurizr.dsl.identifier" : "f63fea32-2246-4d79-96a1-0ba3e9e17967"
-        },
         "sourceId" : "2",
         "tags" : "Relationship"
       } ],
