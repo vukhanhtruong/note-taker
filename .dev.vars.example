@@ -1,0 +1,4 @@
+// Note: All keys in this file should be put to Cloudflare via following command:
+// npm run secret:add KEY
+
+JWT_SECRET="secret-here"
