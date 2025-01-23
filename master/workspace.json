@@ -52,7 +52,7 @@
       "order" : 1,
       "title" : ""
     }, {
-      "content" : "# > Code-Level Class Diagram\n\nThe code designed by following Clean Architecture diagram, so the **color-code** is matter, pay attention please.\n\n![](/clean-arch.png)\n\nBelow are links to various code-level diagrams. Each link takes you to a dedicated page with detailed diagrams.\n\n- [User Diagram](/>>-user)\n- [Note Diagram](/>>-note)\n",
+      "content" : "# > Code-Level Class Diagram\n\nThe code designed by following Clean Architecture diagram, so the **color-code** is matter, pay attention please.\n\n![](/clean-arch.png)\n\nBelow are links to various code-level diagrams. Each link takes you to a dedicated page with detailed diagrams.\n\n- [User Diagram](/-user)\n- [Note Diagram](/-note)\n",
       "filename" : "02-class-diagrams.md",
       "format" : "Markdown",
       "order" : 2,
